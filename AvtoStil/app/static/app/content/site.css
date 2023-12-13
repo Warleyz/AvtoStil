@@ -455,10 +455,10 @@ th{text-align:center}
     border-color: #4c4c4c;
     color: black;
 }
-    .returntocatalogbut:hover,
-    .confirmorderbut:hover,
-    .backtomyordersbut:hover,
-    .backtoordersmanbut:hover {
+    .returntocatalogbut:hover, .returntocatalogbut:active, .returntocatalogbut:focus,
+    .confirmorderbut:hover, .confirmorderbut:active, .confirmorderbut:focus,
+    .backtomyordersbut:hover, .backtomyordersbut:active, .backtomyordersbut:focus,
+    .backtoordersmanbut:hover, .backtoordersmanbut:active, .backtoordersmanbut:focus {
         background-color: rgba(252, 211, 43, 0.7);
         color: black;
     }
