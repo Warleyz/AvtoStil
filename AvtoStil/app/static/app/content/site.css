@@ -1,0 +1,482 @@
+body {
+    padding-top: 140px;
+    padding-bottom: 20px;
+    background-color: gainsboro;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+    color: #000000;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    /*font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;*/
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+/* styles for validation helpers */
+.field-validation-error {
+    color: #b94a48;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+input.input-validation-error {
+    border: 1px solid #b94a48;
+}
+
+input[type="checkbox"].input-validation-error {
+    border: 0 none;
+}
+
+.validation-summary-errors {
+    color: #b94a48;
+}
+
+.validation-summary-valid {
+    display: none;
+}
+
+.ico {
+    width: 75px;
+    margin-bottom: 15px;
+}
+
+.hrline {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    border: none;
+    border-top: 2px solid rgb(0,0,0);
+}
+
+.navbar-nav {
+    margin-top: 35px;
+    font-size: 16px;
+}
+
+.navbar-brand {
+    padding-bottom: 0;
+}
+
+.navbar-right,
+.navbar-right .navbar-brand {
+    font-size: 14px;
+    padding-left:10px;
+}
+
+
+.block-about p {
+    font-size: 22px;
+    line-height: 160%;
+}
+
+.block-about h2 {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.cons {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+    .cons .cell {
+        padding: 15px;
+        height: 300px;
+        font-size: 15px;
+    }
+
+#titleAbout {
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 25px;
+}
+
+#titleContact {
+    font-size: 36px;
+    margin-bottom: 25px;
+}
+
+.map iframe {
+    width: 100%;
+}
+
+.jumbotron {
+    padding: 10px;
+    box-shadow: 0 14px 28px #FCD32B, 0 10px 10px #FCD32B;
+}
+
+.jumbotron .lead {
+    font-size: 28px;
+    line-height: 150%;
+    text-align: center;
+}
+
+
+.jumbotron p {
+    font-size: 22px;
+    line-height: 150%;
+}
+
+#face {
+    width: 100%;
+    margin-bottom: 25px;
+    border: solid #FCD32B 2px;
+    border-radius: 10px;
+    margin-top: 25px;
+}
+
+.pic {
+    text-align: center;
+}
+
+.pic #piclogo {
+    width: 100%;
+    max-width: 720px;
+    border: solid #FCD32B 2px;
+    border-radius: 10px;
+    margin-bottom: 25px;
+}
+
+.prod {
+    text-align: center;
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+
+.product {
+    border: solid #FCD32B 2px;
+    border-radius: 15px;
+}
+
+.p1, .p2, .p3 {
+    width: 49%;
+}
+
+.block-links {
+    font-size: 24px;
+    line-height: 150%;
+}
+
+.block-links .org {
+    margin-bottom: 25px;
+    margin-top: 25px;
+}
+
+.orgname {
+    font-size: 36px;
+    margin-left: 25px;
+}
+
+body {
+    overflow-y: scroll;
+}
+
+.feed-block {
+    line-height: 25px;
+}
+
+    .feed-block p {
+        margin-bottom: 30px;
+        font-size: 14px;
+    }
+
+    .feed-block .inp {
+        font-size: 16px;
+        margin-bottom: 25px;
+    }
+
+form .confirm {
+    font-size: 12px;
+}
+
+form .inpgroup1, form .inpgroup2 {
+    width: 100%;
+}
+
+    form .inpgroup1 .inp {
+        margin: 30px;
+        margin-top: 0;
+        min-width: 330px;
+        width: 50%;
+    }
+
+    form .inpgroup2 .inp {
+        margin: 30px;
+        margin-top: 0;
+        min-width: 330px;
+        width: 50%;
+    }
+
+form .inpgroup3 {
+    margin: 30px;
+    margin-top: 0;
+}
+
+    form .inpgroup3 .inp, .cb {
+        font-size: 16px;
+    }
+
+form .inpgroup4 {
+    margin: 30px;
+    margin-top: 0;
+    min-width: 330px;
+    width: 50%;
+}
+
+form input[type="text"],
+form input[type="email"],
+form input[type="password"],
+form textarea {
+    width: 100%;
+    border-radius: 25px;
+    padding-left: 10px;
+    max-width: 100%;
+}
+
+form select {
+    border-radius: 25px;
+    max-width: 100%;
+}
+
+form .inpgroup5 div {
+    margin-left: 30px;
+}
+
+.but {
+    border-radius: 7px;
+    font-size: 14px;
+    background-color: rgb(252, 211, 43,0.5);
+}
+
+#id_name, #id_email, #id_city, #id_phone, #id_message {
+    background-color: rgb(252, 243, 146);
+}
+
+h5 {
+    color: black;
+    text-decoration: underline;
+}
+
+.carousel-caption {
+    background-color: rgba(0,0,0,0.65);
+    border-radius: 25px;
+}
+
+.postpic {
+    width: 650px;
+    margin-bottom: 45px;
+    margin-top: 15px;
+    border-radius: 5px;
+}
+
+.blockpp {
+    text-align: center;
+}
+
+.postpic {
+    min-width: 320px;
+    width: 50%;
+}
+
+.blogpost h2 {
+    font-weight: bold;
+    text-align: center;
+}
+
+.dropdown-menu {
+    background-color: #222222;
+    border-radius: 7px;
+    box-shadow: 0 12px 35px rgba(252, 211, 43, 0.2);
+}
+.dropdown-menu > li > a:hover,
+.dropdown-menu > li > a:focus {
+    color: #FFFFFF;
+    text-decoration: none;
+    background-color: #4c4c4c;
+}
+.dropdown-menu > li > a {
+    color: #FFFFFF;
+}
+
+.navbar-inverse .navbar-nav > .open > a,
+.navbar-inverse .navbar-nav > .open > a:hover,
+.navbar-inverse .navbar-nav > .open > a:focus {
+    background-color: #222222;
+}
+
+.catalog-content {
+    text-align: center;
+}
+
+.cataloge-img {
+    max-width: 220px;
+    min-width: 80px;
+    width: 100%;
+    max-height: 200px;
+    min-height: 50px;
+    border-radius: 10px;
+    border: solid rgba(0, 0, 0, 0.5) 1px;
+}
+.tblimg {
+    max-width: 130px;
+    min-width: 75px;
+    width: 100%;
+    max-height: 140px;
+    min-height: 85px;
+}
+
+.colm {
+    max-width: 250px;
+    min-width: 200px;
+    width: 100%;
+    height: 465px;
+    margin: 15px;
+    margin-bottom:35px;
+    margin-top:0;
+    text-align: center;
+    display: inline-block;
+    vertical-align: top;
+    padding: 10px;
+    box-shadow: 0 14px 28px rgba(252, 211, 43, 0.6), 0 10px 10px rgba(252, 211, 43, 0.6);
+    border: solid rgba(0, 0, 0, 0.5) 1px;
+}
+.colm h5 {
+    font-size:14px;
+    line-height:150%;
+}
+
+.colm h3 {
+    font-size: 18px;
+    line-height:100%;
+    font-weight:bold;
+    margin-bottom:25px;
+}
+
+.colm .btnaddtocart a {
+    font-size: 16px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    border-color: #4c4c4c;
+}
+
+.colm .btnaddtocart a,
+.row .active, .row .inactive{
+    font-size: 16px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    background-color: #4c4c4c;
+    border-color: #4c4c4c;
+}
+
+.row .inctive {
+    background-color: #4c4c4c;
+}
+.row .active {
+    background-color: rgba(252, 211, 43, 1);
+    color: black;
+}
+    .colm .btnaddtocart a:hover,
+    .row .inactive:hover {
+        background-color: rgba(76, 76, 76,0.8);
+    }
+
+.product-info{
+    margin-bottom:10px;
+}
+.infobut {
+    background-color: rgba(252, 211, 43, 1);
+    border-color: #4c4c4c;
+    color: black;
+}
+    .infobut:hover,
+    .infobut:focus,
+    .infobut:active{
+        background-color: rgba(252, 211, 43, 0.7);
+        color: black;
+    }
+
+table, tbody, thead, th, tr, td {
+    border: solid black 2px;
+}
+.table thead > tr > th {
+    border-bottom:none;
+}
+
+.table > td{
+    font-weight:100;
+}
+
+.order-table .orderdetailsbut {
+    background-color: rgba(252, 211, 43, 1);
+    border-color: #4c4c4c;
+    color: black;
+    margin-right: 25px;
+}
+    .order-table .orderdetailsbut:hover {
+        background-color: rgba(252, 211, 43, 0.7);
+    }
+
+
+.order-table .cancelorderbut,
+.cancelorderbut {
+    border-color: #4c4c4c;
+}
+
+.quantbut {
+    width: 35px;
+    font-size: 15px;
+    border-color: #4c4c4c;
+}
+
+th{text-align:center}
+
+.quant{ 
+    margin-top:7px;
+    margin-bottom:7px;
+}
+
+.table tbody > tr > td {
+    vertical-align:inherit;
+}
+
+.returntocatalogbut, .confirmorderbut,
+.backtomyordersbut, .backtoordersmanbut {
+    background-color: rgba(252, 211, 43, 1);
+    border-color: #4c4c4c;
+    color: black;
+}
+    .returntocatalogbut:hover,
+    .confirmorderbut:hover,
+    .backtomyordersbut:hover,
+    .backtoordersmanbut:hover {
+        background-color: rgba(252, 211, 43, 0.7);
+        color: black;
+    }
+
+.cartb {
+    display: flex;
+    justify-content:space-between;
+}
+
+.glyphicon{
+    margin-right:5px;
+}
+
+footer p{
+    font-size:12px;
+}
+
+footer img{
+    width:30px;
+
+}

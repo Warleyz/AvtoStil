@@ -1,0 +1,44 @@
+{% extends "app/layout.html" %}
+
+{% block content %}
+<h2>{{ title }}</h2>
+<br />
+{% if items|length != 0 %}
+    <div class="container order-table">
+        <div class="col-md-9">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead class="table">
+                        <tr class="table">
+                            <th>Заказ #</th>
+                            <th>Стоимость</th>
+                            <th>Дата заказа</th>
+                            <th>Статус заказа</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody class="table">
+                        {% for item in items %}
+                            <tr class="table">
+                                <td class="text-center">{{item.id}}</td>
+                                <td class="text-center">{{item.total_price}} руб.</td>
+                                <td class="text-center">{{item.order_date}}</td>
+                                <td class="text-center">{{item.order_status}}</td>
+                                <td class="text-center">
+                                    <a href="{% url 'orderdetails' order=item.id%}" class="btn btn-primary orderdetailsbut">Детали заказа</a>
+                                    <a href="{% url 'order_cancel_cust' item=item.id %}" class="btn btn-danger cancelorderbut {% if item.order_status.id > 6 %}  disabled {% endif %}">Отменить заказ</a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+{% else %}
+<div class="text-center">
+    <div class="order_total_title"> Ваш список заказов пуст </div>
+</div>
+{% endif %}
+{% endblock %}

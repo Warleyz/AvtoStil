@@ -1,0 +1,65 @@
+{% extends "app/layout.html" %}
+
+{% block content %}
+<h2>{{ title }}</h2>
+<br />
+{% if items|length != 0 %}
+    <div class="container order-table cart">
+        <div class="col-md-10">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead class="table">
+                        <tr class="table">
+                            <th>Изображение товара</th>
+                            <th>Название</th>
+                            <th>Количество</th>
+                            <th>Цена за товар</th>
+                            <th>Цена за все товары</th>
+                        </tr>
+                    </thead>
+                    <tbody class="table">
+                        {% for item in items %}
+                            <tr class="table">
+                                <td class="text-center"><img class="cataloge-img tblimg" src="{{item.product.image.url}}"></td>
+                                <td>{{item.product.name}}</td>
+                                <td>
+                                    <div class="text-center">
+                                        <div><a class="btn btn-success quantbut plus" href="{% url 'quantity_plus' %}?item={{item.id}}">+</a></div>
+                                        <div class="quant">{{item.quantity}}</div>
+                                        <div><a class="btn btn-danger quantbut minus" href="{% url 'quantity_minus' %}?item={{item.id}}">-</a></div>
+                                    </div>
+                                </td>
+                                <td class="text-center prod-single-price">{{item.product.price}} руб.</td>
+                                <td class="text-center prod-total-price">{{item.quantity_price}} руб.</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                    <tfoot class="table">
+                        <tr>
+                            <td class="text-right" colspan="5">Итого:{{order.total_price}} руб.</td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="text-center">
+        <div class="cart_buttons cartb">
+            <a href="{% url 'catalog' %}" class="btn btn-primary returntocatalogbut">Продолжить покупки</a>
+            <a href="{% url 'deal_order' %}?order={{order.id}}" class="btn btn-primary confirmorderbut">Оформить заказ</a>
+        </div>
+    </div>
+
+{% else %}
+    <div class="text-center">
+        <div class="order_total_title"> Корзина пуста </div>
+    </div>
+    <br/>
+    <div class="text-center">
+        <div class="cart_buttons cartemptyb">
+            <a href="{% url 'catalog' %}" class="btn btn-primary returntocatalogbut">Каталог</a>
+        </div>
+    </div>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,53 @@
+{% extends "app/layout.html" %}
+
+{% block content %}
+<h2>{{title}} #{{order.id}}</h2>
+<br />
+<div class="container order-table orderdetail">
+    <div class="col-md-10">
+        <div class="table-responsive">
+            <table class="table">
+                <thead class="table">
+                    <tr class="text-center">
+                        <th>Изображение товара</th>
+                        <th>Название</th>
+                        <th>Количество</th>
+                        <th>Цена за товар</th>
+                        <th>Цена за все товары</th>
+                    </tr>
+                </thead>
+                <tbody class="table">
+                    {% for item in items %}
+                        <tr class="table">
+                            <td class="text-center"><img class="cataloge-img tblimg" src="{{item.product.image.url}}"></td>
+                            <td>{{item.product.name}}</td>
+                            <td>
+                                <div class="text-center">
+                                    <div class="quant">{{item.quantity}}</div>
+                                </div>
+                            </td>
+                            <td class="text-center prod-single-price">{{item.product.price}} руб.</td>
+                            <td class="text-center prod-total-price">{{item.quantity_price}} руб.</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+                <tfoot class="table">
+                    <tr>
+                        <td class="text-right" colspan="5">Итого:{{order.total_price}} руб.</td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="cart_buttons cartb">
+    {% if user.is_staff or user.is_superuser %}
+        <a href="{% url 'ordersmanage' %}" class="btn btn-primary backtoordersmanbut">Вернуться к заказам</a>
+        <a href="{% url 'order_cancel_man' item=order.id %}" class="btn btn-danger cancelorderbut {% if item.order_status.id > 6 %} disabled {% endif %}">Отменить заказ</a>
+    {% else %}
+        <a href="{% url 'myorders' %}" class="btn btn-primary backtomyordersbut">Вернуться к моим заказам</a>
+        <a href="{% url 'order_cancel_cust' item=order.id %}" class="btn btn-danger cancelorderbut {% if order.order_status.id > 6 %} disabled {% endif %}">Отменить заказ</a>
+    {% endif %}
+</div>
+{% endblock %}

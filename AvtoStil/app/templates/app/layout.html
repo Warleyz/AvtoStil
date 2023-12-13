@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }} </title>
+    {% load static %}
+    <link rel="shortcut icon" type="image/png" href="{% static 'app/content/logo.png' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'app/content/bootstrap.min.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'app/content/site.css' %}" />
+    <script src="{% static 'app/scripts/modernizr-2.6.2.js' %}"></script>
+    <script src="{% static 'app/scripts/jquery-1.10.2.js' %}"></script>
+    <script src="static/app/scripts/jquery.validate.js"></script>
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="/" class="navbar-brand"> <img src="{% static 'app/content/logo.png' %}" alt="logo" width="100" /> </a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="{% url 'home' %}"><span class="glyphicon glyphicon-home"></span>Главная</a></li>
+                    <li><a href="{% url 'catalog' %}"><span class="glyphicon glyphicon-th"></span>Каталог</a></li>
+                    {% if user.is_superuser %}
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <span class="glyphicon glyphicon-book"></span>Блог<span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="{% url 'blog' %}">Блог</a></li>
+                                <li><a class="dropdown-item" href="{% url 'newpost' %}">Добавить статью</a></li>
+                            </ul>
+                        </li>
+                    {% else %}
+                        <li><a href="{% url 'blog' %}"><span class="glyphicon glyphicon-book"></span>Блог</a></li>
+                    {% endif %}
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <span class="glyphicon glyphicon-comment"></span>Контакты<span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="{% url 'contact' %}">Контакты</a></li>
+                            <li><a href="{% url 'feedback' %}">Обратная связь</a></li>
+                        </ul>
+                    </li>
+                    {% if user.is_authenticated %}
+                        {%  if user.is_staff or user.is_superuser %}
+                            <li><a href="{% url 'ordersmanage' %}"><span class="glyphicon glyphicon-th-list"></span>Заказы</a></li>
+                        {% else %}
+                            <li><a href="{% url 'myorders' %}"><span class="glyphicon glyphicon-th-list"></span>Мои заказы</a></li>
+                        {% endif %}
+                    {% endif %}
+                </ul>
+                {% include 'app/loginpartial.html' %}
+            </div>
+        </div>
+    </div>
+
+    <div class="container body-content">
+        {% block content %}{% endblock %}
+        <hr class="hrline">
+        <footer class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <p>Работаем без выходных</p>
+                    <p>Будни 09:00 | 20:00</p>
+                    <p>Суббота/Воскресенье 09:00 | 20:00</p>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <p>Телефон: +7 (921) 211-01-65</p>
+                        <p>Email: avtostilpskov@lafmarket.ru</p>
+                        <span class="acсount-icon">
+                            <a href="https://vk.com/avtostilpskov"><img src="{% static 'app/content/ico-vk.png' %}" alt="VK" /></a>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <p class="text-center">&copy; {{ year }} - АвтоСтиль</p>
+        </footer>
+    </div>
+
+    <script src="{% static 'app/scripts/bootstrap.js' %}"></script>
+    <script src="{% static 'app/scripts/respond.js' %}"></script>
+    {% block scripts %}{% endblock %}
+</body>
+</html>

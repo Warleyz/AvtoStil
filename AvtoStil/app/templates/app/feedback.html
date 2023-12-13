@@ -1,0 +1,125 @@
+{% extends "app/layout.html" %}
+{% block content %}
+
+{% if form != None %}
+    <div class="jumbotron">
+        <div class="feed-block">
+            <h2>Оставить обращение</h2>
+            <p>Здесь вы можете оставить обращение по любому вопросу.</p>
+
+            <form method="post">
+                {% csrf_token %}
+                <div class="inpgroup1">
+                    <div class="inp">
+                        <label for="{{ form.name.id_for_label }}">{{ form.name.label }}:</label><br>
+                        {{ form.name }}
+                    </div>
+                    <div class="inp">
+                        <label for="{{ form.phone.id_for_label }}">{{ form.phone.label }}:</label><br>
+                        {{ form.phone }}
+                    </div>
+                </div>
+                <div class="inpgroup2">
+                    <div class="inp">
+                        <label for="{{ form.email.id_for_label }}">{{ form.email.label }}:</label><br>
+                        {{ form.email }}
+                    </div>
+                    <div class="inp">
+                        <label for="{{ form.city.id_for_label }}">{{ form.city.label }}:</label><br>
+                        {{ form.city }}
+                    </div>
+                </div>
+                <div class="inpgroup3">
+                    <div class="inp">
+                        <label for="{{ form.issue.id_for_label }}">{{ form.issue.label }}:</label><br>
+                        {{ form.issue }}
+                    </div>
+                    <div class="cb">
+                        <label for="{{ form.callback.id_for_label }}">{{ form.callback.label }}:</label>
+                        {{ form.callback }}
+                    </div>
+                </div>
+                <div class="inpgroup4">
+                    <div class="inp">
+                        <label for="{{ form.message.id_for_label }}">{{ form.message.label }}:</label><br>
+                        {{ form.message }}
+                    </div>
+                </div>
+                <div class="inpgroup5">
+                    <div class="confirm">
+                        {{ form.notice }}
+                        <label for="{{ form.notice.id_for_label }}">{{ form.notice.label }}:</label>
+                    </div><br>
+                    <div><input class="but" id="sendbutton" type="submit" value="Отправить"></div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+{% else %}
+    <h2>Спасибо за обращение.</h2>
+    <h3>С вами скоро свяжутся!</h3>
+    <p>Обычно отвечаем в течении 30 минут.</p>
+    <br>
+{% endif %}
+
+<script>
+    function onSendButton() {
+        $('#sendbutton').css('background-color', 'rgb(252, 239, 0)');
+        $('#sendbutton').css('box-shadow', '0 14px 28px #FCD32B, 0 -1px 16px #FCD32B');
+        $('#sendbutton').css('color', 'red');
+    }
+    function outSendButton() {
+        $('#sendbutton').css('background-color', 'rgb(252, 211, 43,0.5)');
+        $('#sendbutton').css('box-shadow', 'none');
+        $('#sendbutton').css('color', 'black');
+    }
+    $('#sendbutton').mouseover(onSendButton);
+    $('#sendbutton').mouseout(outSendButton);
+
+    function onFocusName() {
+        $('#id_name').css('background-color', 'white')
+    }
+    function onBlurName() {
+        $('#id_name').css('background-color', 'rgb(252, 243, 146)')
+    }
+    $('#id_name').focus(onFocusName)
+    $('#id_name').blur(onBlurName)
+
+    function onFocusPhone() {
+        $('#id_phone').css('background-color', 'white')
+    }
+    function onBlurPhone() {
+        $('#id_phone').css('background-color', 'rgb(252, 243, 146)')
+    }
+    $('#id_phone').focus(onFocusPhone)
+    $('#id_phone').blur(onBlurPhone)
+
+    function onFocusCity() {
+        $('#id_city').css('background-color', 'white')
+    }
+    function onBlurCity() {
+        $('#id_city').css('background-color', 'rgb(252, 243, 146)')
+    }
+    $('#id_city').focus(onFocusCity)
+    $('#id_city').blur(onBlurCity)
+
+    function onFocusEmail() {
+        $('#id_email').css('background-color', 'white')
+    }
+    function onBlurEmail() {
+        $('#id_email').css('background-color', 'rgb(252, 243, 146)')
+    }
+    $('#id_email').focus(onFocusEmail)
+    $('#id_email').blur(onBlurEmail)
+
+    function onFocusMessage() {
+        $('#id_message').css('background-color', 'white')
+    }
+    function onBlurMessage() {
+        $('#id_message').css('background-color', 'rgb(252, 243, 146)')
+    }
+    $('#id_message').focus(onFocusMessage)
+    $('#id_message').blur(onBlurMessage)
+</script>
+{% endblock %}
