@@ -480,3 +480,16 @@ footer img{
     width:30px;
 
 }
+
+.loginbut, .signinbut {
+    background-color: rgba(252, 211, 43, 1);
+    border-color: #4c4c4c;
+    color: black;
+}
+
+    .loginbut:hover, .loginbut:focus, .loginbut:active,
+    .signinbut:hover .signinbut:focus, .signinbut:active {
+        background-color: rgba(252, 211, 43, 0.7);
+        border-color: #4c4c4c;
+        color: black;
+    }

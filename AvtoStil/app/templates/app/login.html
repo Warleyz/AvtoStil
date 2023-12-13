@@ -8,7 +8,7 @@
             <form action="." method="post" class="form-horizontal">
                 {% csrf_token %}
                 <h4>Введите логин и пароль.</h4>
-                <hr />
+                <hr class="hrline"/>
                 <div class="form-group">
                     <label for="id_username" class="col-md-2 control-label">Логин</label>
                     <div class="col-md-10">
@@ -24,7 +24,7 @@
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">
                         <input type="hidden" name="next" value="/" />
-                        <input type="submit" value="Войти" class="btn btn-default" />
+                        <input type="submit" value="Войти" class="btn btn-default loginbut" />
                     </div>
                 </div>
                 {% if form.errors %}
