@@ -6,6 +6,7 @@ from django import forms
 from django.contrib.auth.forms import AuthenticationForm
 from django.utils.translation import gettext_lazy as _
 from django.db import models
+from .models import Comment
 from .models import Blog
 
 class BootstrapAuthenticationForm(AuthenticationForm):
@@ -45,3 +46,11 @@ class BlogForm(forms.ModelForm):
         model = Blog                                                # используемая модель
         fields = ('title', 'description', 'content', 'image',)      # заполняемые поля
         labels = {'title': "Заголовок", 'description': "Краткое содержание", 'content': "Полное содержание", 'image': "Картинка" } # метки к полям формы
+        
+class CommentForm (forms.ModelForm):
+    class Meta:
+        model = Comment                     # используемая модель
+        fields = ('text',)                  # требуется заполнить только поле text
+        labels = {'text': "Комментарий"}    # метка к полю формы text
+# author будет автоматически выбран в зависимости от авторизованного пользователя
+# date автоматически дообавляется в момент создания записи

@@ -36,6 +36,7 @@ urlpatterns = [
 
     path('catalog/', views.catalog, name='catalog'),
     path('catalog/<int:cat_id>', views.catalog, name='catalog'),
+    path('product/<int:parametr>/', views.product, name='product'),
     
     path('cart/', views.cart, name='cart'),
     path('add-to-cart/', views.add_to_cart, name='add_to_cart'),

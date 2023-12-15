@@ -5,21 +5,21 @@
 <div class="jumbotron text-center">
     <div class="row category">
         {% if cat_selected == 0 %}
-            <a class="save btn btn-primary active" href="0"> Все товары </a>
+        <a class="save btn btn-primary active" href="0"> Все товары </a>
         {% else %}
-            <a class="save btn btn-primary inactive" href="0"> Все товары </a>
+        <a class="save btn btn-primary inactive" href="0"> Все товары </a>
         {% endif %}
 
         {% for category in categories %}
-            {% if category.pk == cat_selected %}
-                <a class="save btn btn-primary active" href="{{category.get_absolute_url}}"> {{category.name}} </a>
-            {% else %}
-                <a class="save btn btn-primary inactive" href="{{category.get_absolute_url}}"> {{category.name}} </a>
-            {% endif %}
+        {% if category.pk == cat_selected %}
+        <a class="save btn btn-primary active" href="{{category.get_absolute_url}}"> {{category.name}} </a>
+        {% else %}
+        <a class="save btn btn-primary inactive" href="{{category.get_absolute_url}}"> {{category.name}} </a>
+        {% endif %}
         {% endfor %}
     </div>
 </div>
-<hr class="hrline"/>
+<hr class="hrline" />
 
 <div class="catalog-content">
 {% for product in products %}
@@ -28,29 +28,18 @@
         <h5> {{product.name}} </h5>
         <h3> {{product.price}} руб. </h3>
         <div class="product-info">
-            <button type="button" class="btn btn-primary infobut" data-container="body" data-toggle="popover" data-trigger="focus" data-placement="left" data-content="{{ product.description }}">
-                Описание
-            </button>
-            <button type="button" class="btn btn-primary infobut" data-container="body" data-toggle="popover" data-trigger="focus" data-placement="right" data-content="{{ product.short_description }}">
-                Характеристики
-            </button>
+            <a href="{% url 'product' parametr=product.id %}" class="btn btn-primary infobut"> Подробнее </a>
         </div>
         <div class="btnaddtocart">
             {% if not user.is_authenticated %}
-            <a href="{% url 'login' %}" class="btn btn-primary btn-sm"> Добавить в корзину </a>
+                <a href="{% url 'login' %}" class="btn btn-primary btn-sm"> Добавить в корзину </a>
             {% else %}
-            <a href="{% url 'add_to_cart' %}?product={{ product.id }}" class="btn btn-primary btn-sm  {% if user.is_staff %} disabled {% endif %}">
-                Добавить в корзину
-            </a>
+                <a href="{% url 'add_to_cart' %}?product={{ product.id }}" class="btn btn-primary btn-sm  {% if user.is_staff %} disabled {% endif %}">
+                    Добавить в корзину
+                </a>
             {% endif %}
         </div>
     </div>
 {% endfor %}
 </div>
-
-<script>
-    $(function () {
-        $('[data-toggle="popover"]').popover()
-    })  
-</script>
 {% endblock %}

@@ -90,6 +90,25 @@ class Catalog(models.Model):
 		verbose_name_plural = 'Товары'
 admin.site.register(Catalog)
 
+class Comment(models.Model):
+    text = models.TextField(verbose_name = "Текст комментария")
+    date = models.DateTimeField(default = datetime.now(), db_index = True, verbose_name = "Дата комментария")
+    author = models.ForeignKey(User, on_delete = models.CASCADE, verbose_name = "Автор комментария")
+    good = models.ForeignKey(Catalog, on_delete = models.CASCADE, verbose_name = "Товар комментария")
+    
+    # Методы класса
+    def __str__(self): # Метод возвращает название, используемое для представления отдельных записей в административном разделе
+        return 'Комментарий %d %s к %s' % (self.id, self.author, self.good)
+    
+    # Метаданные - вложенный класс, который задаёт дополнительные параметры модели:
+    class Meta:
+        db_table = "Comment"
+        ordering = ["-date"]
+        verbose_name = "Комментарии к товару"
+        verbose_name_plural = "Комментраии к товарам"
+        
+admin.site.register(Comment)
+
 
 class Order(models.Model):
 	customer = models.ForeignKey(User, on_delete = models.CASCADE, verbose_name = 'Покупатель')

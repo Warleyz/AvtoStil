@@ -88,6 +88,7 @@
     <Content Include="app\templates\app\newpost.html" />
     <Content Include="app\templates\app\orderdetails.html" />
     <Content Include="app\templates\app\ordersmanage.html" />
+    <Content Include="app\templates\app\product.html" />
     <Content Include="app\templates\app\registration.html" />
     <Content Include="media\maslo1.jpg" />
     <Content Include="media\maslo2.jpg" />

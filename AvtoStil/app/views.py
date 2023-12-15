@@ -14,6 +14,9 @@ from .models import Blog
 from .forms import BlogForm
 
 from .models import Catalog
+from .models import Comment # использование модели комментариев
+from .forms import CommentForm # использование формы ввода комментария
+
 from .models import Order
 from .models import OrderItem
 from .models import Category
@@ -184,6 +187,37 @@ def catalog(request, cat_id = 0):
         }
     )   
 
+def product(request, parametr):
+    """Renders the product page."""
+    assert isinstance(request, HttpRequest)
+    product_1 = Catalog.objects.get(id=parametr) # запрос на выбор конкретной статьи по параметру
+    comments = Comment.objects.filter(good=parametr)
+    
+    if request.method == "POST": # после отправки данных формы на сервер методом POST
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment_f = form.save(commit=False)
+            comment_f.author = request.user # добавляем (так как этого поля нет в форме) в модель Комментария (Comment) в поле автор авторизованного пользователя
+            comment_f.date = datetime.now() # добавляем в модель Комментария (Comment) текущую дату
+            comment_f.good = Catalog.objects.get(id=parametr) # добавляем в модель Комментария (Comment) статью, для которой данный комментарий
+            comment_f.save() # сохраняем изменения после добавления полей
+            return redirect('product', parametr=product_1.id) # переадресация на ту же страницу статьи после отправки комментария
+    else:
+        form = CommentForm() # создание формы для ввода комментария
+
+    return render(
+        request,
+        'app/product.html',
+        {
+            'product_1': product_1,
+            
+            'comments': comments, # передача всех комментариев к данной статье в шаблон веб-страницы
+            'form': form, # передача формы добавления комментария в шаблон веб-страницы
+
+            'year':datetime.now().year,
+        }
+        
+    )
 
 def cart(request):
     """Renders the cart page."""
